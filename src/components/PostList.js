@@ -1,7 +1,8 @@
 import { connect } from 'react-redux';
 import { fetchPosts } from '../actions/postActions';
 import React, { Component } from 'react';
-import moment from 'moment';
+
+import Post from './Post';
 
 class PostList extends Component {
   componentWillMount = () => {
@@ -10,31 +11,28 @@ class PostList extends Component {
 
   render() {
     if (this.props.posts.length !== 0) {
-      const postItems = this.props.posts.map(post => (
-        <div key={post.data.id} className="container">
-          <div className="row">
-            <div className="col-md-auto">
-              {post.data.thumbnail !== 'self' ? (
-                <img src={post.data.thumbnail} />
-              ) : (
-                <i className="fas fa-align-left" style={{ fontSize: '5rem' }} />
-              )}
-            </div>
-            <div className="col" align="center">
-              <h6>{post.data.title}</h6>
-              {post.data.selftext !== '' ? <p>{post.data.selftext}</p> : null}
-              <p className="text-muted">
-                submitted {moment(post.data.created_utc * 1000).fromNow()} by
-                {post.data.author}
-              </p>
-            </div>
-          </div>
-          <hr />
-        </div>
-      ));
+      const postItems = this.props.posts.map(post => {
+        const postData = {
+          thumbnail: post.data.thumbnail,
+          name: post.data.name,
+          title: post.data.title,
+          url:
+            post.data.media != null
+              ? post.data.is_reddit_media_domain
+                ? post.data.media.reddit_video.fallback_url
+                : post.data.media.oembed.thumbnail_url
+              : post.data.url,
+          permalink: post.data.permalink,
+          selftext: post.data.selftext,
+          author: post.data.author,
+          score: post.data.score,
+          created_utc: post.data.created_utc
+        };
+        return <Post key={post.data.id} post={postData} />;
+      });
       return <div>{postItems}</div>;
     }
-    return <div>Loading</div>;
+    return <h1>Loading</h1>;
   }
 }
 
