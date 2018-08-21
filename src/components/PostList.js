@@ -26,7 +26,8 @@ class PostList extends Component {
           selftext: post.data.selftext,
           author: post.data.author,
           score: post.data.score,
-          created_utc: post.data.created_utc
+          created_utc: post.data.created_utc,
+          subreddit: post.data.subreddit
         };
         return <Post key={post.data.id} post={postData} />;
       });

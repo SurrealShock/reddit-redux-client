@@ -31,5 +31,5 @@ export default class SocialIcon extends Component {
 
 SocialIcon.defaultProps = {
   size: '1em',
-  color: '#FF6F00'
+  color: '#ff4500'
 };

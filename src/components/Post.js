@@ -13,7 +13,8 @@ class Post extends Component {
       selftext,
       author,
       score,
-      created_utc
+      created_utc,
+      subreddit
     } = this.props.post;
 
     return (
@@ -49,27 +50,42 @@ class Post extends Component {
                 </div>
               </div>
             ) : (
-              <i className="fas fa-align-left" style={{ fontSize: '140px' }} />
+              <i
+                className="fas fa-align-left"
+                style={{ width: '140px', fontSize: '140px' }}
+              />
             )}
           </div>
           <div className="col">
             <a
-              style={{ color: 'inherit' }}
+              style={{ color: 'inherit', fontWeight: '600' }}
               href={`https://www.reddit.com${permalink}`}
             >
               {title}
             </a>
             {selftext !== '' ? <p>{selftext}</p> : null}
             <p className="text-muted">
-              submitted {moment(created_utc * 1000).fromNow()} by
-              <span style={{ color: '#FF6F00' }}> {author}</span>
+              submitted {moment(created_utc * 1000).fromNow()} by{' '}
+              <a
+                href={`https://www.reddit.com/u/${author}`}
+                style={{ color: '#ff4500' }}
+              >
+                {author}
+              </a>{' '}
+              to{' '}
+              <a
+                href={`https://www.reddit.com/r/${subreddit}`}
+                style={{ color: '#ff4500' }}
+              >
+                {subreddit}
+              </a>
             </p>
           </div>
 
           <div className="col-md-auto text-center">
-            <HoverIcon className="fas fa-angle-up" />
+            <HoverIcon className="fas fa-chevron-circle-up" />
             <p className="mb-0">{score}</p>
-            <HoverIcon className="fas fa-angle-down" color="#AA00FF" />
+            <HoverIcon className="fas fa-chevron-circle-down" color="#AA00FF" />
           </div>
         </div>
       </div>
