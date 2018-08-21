@@ -23,22 +23,94 @@ class SideBar extends Component {
   render() {
     return (
       <div
-        class="menu sticky-top p-3 shadow"
+        className="sticky-top p-3 shadow"
         style={{ height: this.state.height }}
       >
         <h2>
-          <i style={{ color: '#ff4500' }} class="fab fa-reddit" /> redd
+          <i style={{ color: '#ff4500' }} className="fab fa-reddit" /> redd
           <span style={{ color: '#ff4500' }}>i</span>t
         </h2>
-        <div class="nav flex-column">
-          <a href="#" class="nav-link pl-0">
-            Menu 1
+        <div className="nav flex-column">
+          <a
+            href="#"
+            className="nav-link pl-0 pt-4"
+            style={{ color: '#ff4500' }}
+          >
+            <i class="fas fa-bullseye" /> HOT
           </a>
-          <a href="#" class="nav-link pl-0">
-            Menu 2
+          <a
+            href="#"
+            className="nav-link pl-0 pt-4 text-muted"
+            style={{ color: 'inherit' }}
+          >
+            <i class="fas fa-plus-circle" /> NEW
           </a>
-          <a href="#" class="nav-link pl-0">
-            Menu 3
+          <a
+            href="#"
+            className="nav-link pl-0 pt-4 text-muted"
+            style={{ color: 'inherit' }}
+          >
+            <i class="fas fa-chart-line" /> RISING
+          </a>
+          <a
+            href="#"
+            className="nav-link pl-0 pt-4 text-muted"
+            style={{ color: 'inherit' }}
+          >
+            <i
+              style={{ transform: 'rotate(90deg)' }}
+              class="fas fa-exchange-alt"
+            />{' '}
+            CONTROVERSIAL
+          </a>
+          <a
+            href="#"
+            className="nav-link pl-0 pt-4 text-muted"
+            style={{ color: 'inherit' }}
+          >
+            <i class="fas fa-sort-amount-up" /> TOP
+          </a>
+          <a
+            href="#"
+            className="nav-link pl-0 pt-4 text-muted"
+            style={{ color: 'inherit' }}
+          >
+            <i class="fas fa-medal" /> GILDED
+          </a>
+          <a
+            href="#"
+            className="nav-link pl-0 pt-4 text-muted"
+            style={{ color: 'inherit' }}
+          >
+            <i class="fas fa-university" /> WIKI
+          </a>
+          <a
+            href="#"
+            className="nav-link pl-0 pt-4 text-muted"
+            style={{ color: 'inherit' }}
+          >
+            <i class="fas fa-bullhorn" /> PROMOTED
+          </a>
+          <a
+            href="#"
+            className="nav-link pl-0 pt-4 text-muted"
+            style={{ color: 'inherit' }}
+          >
+            <i class="fas fa-comment" /> COMMENTS
+          </a>
+          <a
+            href="#"
+            className="nav-link pl-0 pt-4 text-muted"
+            style={{ color: 'inherit' }}
+          >
+            <i class="fas fa-cog" /> Settings
+          </a>
+          <a
+            href="#"
+            className="nav-link pl-0 pt-4 text-muted"
+            style={{ color: 'inherit' }}
+          >
+            <i class="fas fa-users" /> Communities
           </a>
         </div>
       </div>

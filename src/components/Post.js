@@ -63,7 +63,16 @@ class Post extends Component {
             >
               {title}
             </a>
-            {selftext !== '' ? <p>{selftext}</p> : null}
+            {selftext !== '' ? (
+              <p
+                style={{
+                  height: '4.4em',
+                  overflow: 'hidden'
+                }}
+              >
+                {selftext}
+              </p>
+            ) : null}
             <p className="text-muted">
               submitted {moment(created_utc * 1000).fromNow()} by{' '}
               <a

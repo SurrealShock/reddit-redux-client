@@ -11,13 +11,13 @@ class App extends Component {
     return (
       <Provider store={store}>
         <div className="App" style={{ color: 'black' }}>
-          <div class="row">
-            <div class="col-4 col-sm-2">
+          <div className="row mr-0">
+            <div className="col-2">
               <SideBar />
             </div>
-            <div class="col-7 col-sm-8 content">
+            <div className="col-10 mt-3 mb-3">
               <div
-                className="rounded m-5 float-left pb-3"
+                className="rounded float-left"
                 style={{
                   boxShadow:
                     '0 0 20px rgba(0,0,0,0.10), 0 6px 6px rgba(0,0,0,0.15)'
