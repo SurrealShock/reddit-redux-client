@@ -32,28 +32,28 @@ class SideBar extends Component {
         </h2>
         <div className="nav flex-column">
           <a
-            href="#"
+            href="/hot"
             className="nav-link pl-0 pt-4"
             style={{ color: '#ff4500' }}
           >
             <i className="fas fa-bullseye" /> HOT
           </a>
           <a
-            href="#"
+            href="/new"
             className="nav-link pl-0 pt-4 text-muted"
             style={{ color: 'inherit' }}
           >
             <i className="fas fa-plus-circle" /> NEW
           </a>
           <a
-            href="#"
+            href="/rising"
             className="nav-link pl-0 pt-4 text-muted"
             style={{ color: 'inherit' }}
           >
             <i className="fas fa-chart-line" /> RISING
           </a>
           <a
-            href="#"
+            href="/controversial"
             className="nav-link pl-0 pt-4 text-muted"
             style={{ color: 'inherit' }}
           >
@@ -64,14 +64,14 @@ class SideBar extends Component {
             CONTROVERSIAL
           </a>
           <a
-            href="#"
+            href="/top"
             className="nav-link pl-0 pt-4 text-muted"
             style={{ color: 'inherit' }}
           >
             <i className="fas fa-sort-amount-up" /> TOP
           </a>
           <a
-            href="#"
+            href="/gilded"
             className="nav-link pl-0 pt-4 text-muted"
             style={{ color: 'inherit' }}
           >
@@ -83,20 +83,6 @@ class SideBar extends Component {
             style={{ color: 'inherit' }}
           >
             <i className="fas fa-university" /> WIKI
-          </a>
-          <a
-            href="#"
-            className="nav-link pl-0 pt-4 text-muted"
-            style={{ color: 'inherit' }}
-          >
-            <i className="fas fa-bullhorn" /> PROMOTED
-          </a>
-          <a
-            href="#"
-            className="nav-link pl-0 pt-4 text-muted"
-            style={{ color: 'inherit' }}
-          >
-            <i className="fas fa-comment" /> COMMENTS
           </a>
           <a
             href="#"

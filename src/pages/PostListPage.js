@@ -1,8 +1,16 @@
 import React, { Component } from 'react';
 import SideBar from '../components/SideBar';
 import PostList from '../components/PostList';
+import { fetchPosts } from '../actions/postActions';
+import { connect } from 'react-redux';
 
 class PostListPage extends Component {
+  componentDidMount = () => {
+    this.props.fetchPosts(
+      `https://www.reddit.com/${this.props.match.params.sort}/.json`
+    );
+  };
+
   render() {
     return (
       <div className="row mr-0">
@@ -55,4 +63,7 @@ class PostListPage extends Component {
   }
 }
 
-export default PostListPage;
+export default connect(
+  null,
+  { fetchPosts }
+)(PostListPage);

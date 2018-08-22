@@ -1,11 +1,18 @@
 import { FETCH_POSTS } from './types';
 import axios from 'axios';
 
-export const fetchPosts = () => dispatch => {
-  axios.get('https://www.reddit.com/.json').then(res =>
-    dispatch({
-      type: FETCH_POSTS,
-      payload: res.data.data.children
-    })
-  );
+export const fetchPosts = url => dispatch => {
+  sessionStorage.getItem(url)
+    ? dispatch({
+        type: FETCH_POSTS,
+        payload: JSON.parse(sessionStorage.getItem(url))
+      })
+    : axios.get(url).then(res => {
+        console.log('fetched from url');
+        sessionStorage.setItem(url, JSON.stringify(res.data.data.children));
+        dispatch({
+          type: FETCH_POSTS,
+          payload: res.data.data.children
+        });
+      });
 };

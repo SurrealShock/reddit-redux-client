@@ -43,7 +43,7 @@ class Post extends Component {
                         <h3>{title}</h3>
                       </div>
                       <div className="modal-body text-center">
-                        {url.indexOf('gifv') !== -1 ? (
+                        {url.indexOf('/DASH') !== -1 ? (
                           <LazyLoad>
                             <video
                               autoPlay={true}
@@ -51,10 +51,7 @@ class Post extends Component {
                               preload="auto"
                               style={{ maxWidth: '90%', height: 'auto' }}
                             >
-                              <source
-                                src={url.substring(0, url.length - 4) + 'mp4'}
-                                type="video/mp4"
-                              />
+                              <source src={url} />
                             </video>
                           </LazyLoad>
                         ) : (
@@ -70,10 +67,12 @@ class Post extends Component {
                 </div>
               </div>
             ) : (
-              <i
-                className="fas fa-align-left"
-                style={{ width: '140px', fontSize: '140px' }}
-              />
+              <a className="text-muted" href={url}>
+                <i
+                  className="fas fa-align-left"
+                  style={{ width: '140px', fontSize: '140px' }}
+                />
+              </a>
             )}
           </div>
           <div className="col">
@@ -86,7 +85,7 @@ class Post extends Component {
             {selftext !== '' ? (
               <p
                 style={{
-                  height: '4.4em',
+                  maxHeight: '4.4em',
                   overflow: 'hidden'
                 }}
               >
