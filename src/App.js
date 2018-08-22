@@ -9,6 +9,7 @@ import {
   Switch,
   Redirect
 } from 'react-router-dom';
+import PostDetailPage from './pages/PostDetailPage';
 
 class App extends Component {
   render() {
@@ -19,6 +20,11 @@ class App extends Component {
             <Switch>
               <Route exact path="/" render={() => <Redirect to="/hot" />} />
               <Route exact path="/:sort" component={PostListPage} />
+              <Route
+                exact
+                path="/r/:subreddit/comments/:id/:titleid"
+                component={PostDetailPage}
+              />
             </Switch>
           </div>
         </Router>

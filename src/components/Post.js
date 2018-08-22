@@ -9,6 +9,7 @@ class Post extends Component {
       thumbnail,
       name,
       title,
+      preview,
       url,
       permalink,
       selftext,
@@ -43,21 +44,20 @@ class Post extends Component {
                         <h3>{title}</h3>
                       </div>
                       <div className="modal-body text-center">
-                        {url.indexOf('/DASH') !== -1 ? (
-                          <LazyLoad>
-                            <video
-                              autoPlay={true}
-                              loop={true}
-                              preload="auto"
-                              style={{ maxWidth: '90%', height: 'auto' }}
-                            >
-                              <source src={url} />
-                            </video>
-                          </LazyLoad>
+                        {preview.indexOf('/DASH') !== -1 ? (
+                          <video
+                            autoPlay={true}
+                            muted={true}
+                            loop={true}
+                            preload="auto"
+                            style={{ maxWidth: '90%', height: 'auto' }}
+                          >
+                            <source src={preview} />
+                          </video>
                         ) : (
                           <img
                             style={{ maxWidth: '95%' }}
-                            src={url}
+                            src={preview}
                             className="rounded"
                           />
                         )}

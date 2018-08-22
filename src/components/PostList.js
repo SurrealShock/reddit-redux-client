@@ -15,11 +15,14 @@ class PostList extends Component {
               : null,
           name: post.data.name,
           title: post.data.title,
-          url: post.data.preview
+          preview: post.data.preview
             ? post.data.preview.reddit_video_preview
               ? post.data.preview.reddit_video_preview.fallback_url
-              : post.data.preview.images[0].source.url
-            : post.data.url,
+              : post.data.media
+                ? post.data.media.reddit_video.fallback_url
+                : post.data.preview.images[0].source.url
+            : null,
+          url: post.data.url,
           permalink: post.data.permalink,
           selftext: post.data.selftext,
           author: post.data.author,
