@@ -36,21 +36,21 @@ class SideBar extends Component {
             className="nav-link pl-0 pt-4"
             style={{ color: '#ff4500' }}
           >
-            <i class="fas fa-bullseye" /> HOT
+            <i className="fas fa-bullseye" /> HOT
           </a>
           <a
             href="#"
             className="nav-link pl-0 pt-4 text-muted"
             style={{ color: 'inherit' }}
           >
-            <i class="fas fa-plus-circle" /> NEW
+            <i className="fas fa-plus-circle" /> NEW
           </a>
           <a
             href="#"
             className="nav-link pl-0 pt-4 text-muted"
             style={{ color: 'inherit' }}
           >
-            <i class="fas fa-chart-line" /> RISING
+            <i className="fas fa-chart-line" /> RISING
           </a>
           <a
             href="#"
@@ -59,7 +59,7 @@ class SideBar extends Component {
           >
             <i
               style={{ transform: 'rotate(90deg)' }}
-              class="fas fa-exchange-alt"
+              className="fas fa-exchange-alt"
             />{' '}
             CONTROVERSIAL
           </a>
@@ -68,49 +68,49 @@ class SideBar extends Component {
             className="nav-link pl-0 pt-4 text-muted"
             style={{ color: 'inherit' }}
           >
-            <i class="fas fa-sort-amount-up" /> TOP
+            <i className="fas fa-sort-amount-up" /> TOP
           </a>
           <a
             href="#"
             className="nav-link pl-0 pt-4 text-muted"
             style={{ color: 'inherit' }}
           >
-            <i class="fas fa-medal" /> GILDED
+            <i className="fas fa-medal" /> GILDED
           </a>
           <a
             href="#"
             className="nav-link pl-0 pt-4 text-muted"
             style={{ color: 'inherit' }}
           >
-            <i class="fas fa-university" /> WIKI
+            <i className="fas fa-university" /> WIKI
           </a>
           <a
             href="#"
             className="nav-link pl-0 pt-4 text-muted"
             style={{ color: 'inherit' }}
           >
-            <i class="fas fa-bullhorn" /> PROMOTED
+            <i className="fas fa-bullhorn" /> PROMOTED
           </a>
           <a
             href="#"
             className="nav-link pl-0 pt-4 text-muted"
             style={{ color: 'inherit' }}
           >
-            <i class="fas fa-comment" /> COMMENTS
+            <i className="fas fa-comment" /> COMMENTS
           </a>
           <a
             href="#"
             className="nav-link pl-0 pt-4 text-muted"
             style={{ color: 'inherit' }}
           >
-            <i class="fas fa-cog" /> Settings
+            <i className="fas fa-cog" /> Settings
           </a>
           <a
             href="#"
             className="nav-link pl-0 pt-4 text-muted"
             style={{ color: 'inherit' }}
           >
-            <i class="fas fa-users" /> Communities
+            <i className="fas fa-users" /> Communities
           </a>
         </div>
       </div>

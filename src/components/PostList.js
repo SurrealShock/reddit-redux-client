@@ -13,7 +13,9 @@ class PostList extends Component {
     if (this.props.posts.length !== 0) {
       const postItems = this.props.posts.map(post => {
         const postData = {
-          thumbnail: post.data.thumbnail,
+          thumbnail: post.data.preview
+            ? post.data.preview.images[0].source.url
+            : null,
           name: post.data.name,
           title: post.data.title,
           url:

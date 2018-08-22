@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 import HoverIcon from './HoverIcon';
+import LazyLoad from 'react-lazy-load';
 
 class Post extends Component {
   render() {
@@ -21,10 +22,13 @@ class Post extends Component {
       <div className="container pt-4 pl-4">
         <div className="row align-items-center">
           <div className="col-md-auto">
-            {RegExp('https?://.*.jpg').test(thumbnail) ? (
+            {thumbnail ? (
               <div>
                 <img
                   style={{
+                    width: '140px',
+                    maxHeight: '180px',
+                    objectFit: 'cover',
                     cursor: 'pointer'
                   }}
                   data-toggle="modal"
@@ -39,11 +43,27 @@ class Post extends Component {
                         <h3>{title}</h3>
                       </div>
                       <div className="modal-body text-center">
-                        <img
-                          style={{ maxWidth: '95%' }}
-                          src={url}
-                          className="rounded"
-                        />
+                        {url.indexOf('gifv') !== -1 ? (
+                          <LazyLoad>
+                            <video
+                              autoPlay={true}
+                              loop={true}
+                              preload="auto"
+                              style={{ maxWidth: '90%', height: 'auto' }}
+                            >
+                              <source
+                                src={url.substring(0, url.length - 4) + 'mp4'}
+                                type="video/mp4"
+                              />
+                            </video>
+                          </LazyLoad>
+                        ) : (
+                          <img
+                            style={{ maxWidth: '95%' }}
+                            src={url}
+                            className="rounded"
+                          />
+                        )}
                       </div>
                     </div>
                   </div>
