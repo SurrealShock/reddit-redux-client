@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 class PostListPage extends Component {
   componentDidMount = () => {
     this.props.fetchPosts(
-      `https://www.reddit.com/${this.props.match.params.sort}/.json`
+      `https://www.reddit.com/${this.props.match.params.sort}/.json?raw_json=1`
     );
   };
 

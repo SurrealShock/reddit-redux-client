@@ -5,6 +5,51 @@ import React, { Component } from 'react';
 import Post from './Post';
 
 class PostList extends Component {
+  previewURL = data => {
+    if (data.media) {
+      if (data.media.oembed) {
+        const embedString = data.media.oembed.html.replace('\\', '');
+        return embedString;
+      } else {
+        return (
+          <video
+            autoPlay={true}
+            muted={true}
+            loop={true}
+            preload="auto"
+            style={{ maxWidth: '90%', height: 'auto' }}
+          >
+            <source src={data.media.reddit_video} />
+          </video>
+        );
+      }
+    } else if (data.preview) {
+      if (data.preview.reddit_video_preview) {
+        return (
+          <video
+            autoPlay={true}
+            muted={true}
+            loop={true}
+            preload="auto"
+            style={{ maxWidth: '90%', height: 'auto' }}
+          >
+            <source src={data.preview.reddit_video_preview.fallback_url} />)
+          </video>
+        );
+      } else {
+        return (
+          <img
+            style={{ maxWidth: '95%' }}
+            src={data.preview.images[0].source.url}
+            className="rounded"
+          />
+        );
+      }
+    } else {
+      return null;
+    }
+  };
+
   render() {
     if (this.props.posts.length !== 0) {
       const postItems = this.props.posts.map(post => {
@@ -15,13 +60,7 @@ class PostList extends Component {
               : null,
           name: post.data.name,
           title: post.data.title,
-          preview: post.data.preview
-            ? post.data.preview.reddit_video_preview
-              ? post.data.preview.reddit_video_preview.fallback_url
-              : post.data.media
-                ? post.data.media.reddit_video.fallback_url
-                : post.data.preview.images[0].source.url
-            : null,
+          preview: this.previewURL(post.data),
           url: post.data.url,
           permalink: post.data.permalink,
           selftext: post.data.selftext,

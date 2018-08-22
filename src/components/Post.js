@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 import HoverIcon from './HoverIcon';
-import LazyLoad from 'react-lazy-load';
+import ReactHtmlParser from 'react-html-parser';
 
 class Post extends Component {
   render() {
@@ -44,22 +44,10 @@ class Post extends Component {
                         <h3>{title}</h3>
                       </div>
                       <div className="modal-body text-center">
-                        {preview.indexOf('/DASH') !== -1 ? (
-                          <video
-                            autoPlay={true}
-                            muted={true}
-                            loop={true}
-                            preload="auto"
-                            style={{ maxWidth: '90%', height: 'auto' }}
-                          >
-                            <source src={preview} />
-                          </video>
+                        {typeof preview === typeof '' ? (
+                          <div>{ReactHtmlParser(preview)}</div>
                         ) : (
-                          <img
-                            style={{ maxWidth: '95%' }}
-                            src={preview}
-                            className="rounded"
-                          />
+                          preview
                         )}
                       </div>
                     </div>
@@ -75,7 +63,7 @@ class Post extends Component {
               </a>
             )}
           </div>
-          <div className="col">
+          <div className="col-9">
             <a
               style={{ color: 'inherit', fontWeight: '600' }}
               href={`https://www.reddit.com${permalink}`}
