@@ -12,7 +12,9 @@ class PostListPage extends Component {
         <div className="col-10">
           <div className="row align-items-center mt-3 mb-3">
             <div className="col-md-auto">
-              <h5 className="m-0">Hot</h5>
+              <h5 style={{ textTransform: 'capitalize' }} className="m-0">
+                {this.props.match.params.sort}
+              </h5>
             </div>
             <div className="col-6">
               <h5 className="m-0" style={{ color: '#ff4500' }}>
