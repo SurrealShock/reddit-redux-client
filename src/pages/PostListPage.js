@@ -3,11 +3,19 @@ import SideBar from '../components/SideBar';
 import PostList from '../components/PostList';
 import { fetchPosts } from '../actions/postActions';
 import { connect } from 'react-redux';
+import qs from 'query-string';
 
 class PostListPage extends Component {
   componentDidMount = () => {
+    console.log(
+      `https://www.reddit.com/${this.props.match.params.sort}/.json${
+        this.props.location.search
+      }`
+    );
     this.props.fetchPosts(
-      `https://www.reddit.com/${this.props.match.params.sort}/.json?raw_json=1`
+      `https://www.reddit.com/${this.props.match.params.sort}/.json${
+        this.props.location.search
+      }`
     );
   };
 
@@ -49,14 +57,14 @@ class PostListPage extends Component {
               />
             </div>
           </div>
-          <div
-            className="rounded float-left"
-            style={{
-              boxShadow: '0 0 20px rgba(0,0,0,0.10), 0 6px 6px rgba(0,0,0,0.15)'
-            }}
-          >
-            <PostList />
-          </div>
+          <PostList
+            count={
+              qs.parse(this.props.location.search).page
+                ? qs.parse(this.props.location.search).page
+                : 25
+            }
+            sort={this.props.match.params.sort}
+          />
         </div>
       </div>
     );

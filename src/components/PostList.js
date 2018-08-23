@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 import { fetchPosts } from '../actions/postActions';
 import React, { Component } from 'react';
-
 import Post from './Post';
+import PageNavigator from './PageNavigator';
 
 class PostList extends Component {
   previewURL = data => {
@@ -19,7 +19,7 @@ class PostList extends Component {
             preload="auto"
             style={{ maxWidth: '90%', height: 'auto' }}
           >
-            <source src={data.media.reddit_video} />
+            <source src={data.media.reddit_video.fallback_url} />
           </video>
         );
       }
@@ -52,7 +52,7 @@ class PostList extends Component {
 
   render() {
     if (this.props.posts.length !== 0) {
-      const postItems = this.props.posts.map(post => {
+      const postItems = this.props.posts.data.children.map(post => {
         const postData = {
           thumbnail:
             post.data.thumbnail.indexOf('ps') !== -1
@@ -71,7 +71,24 @@ class PostList extends Component {
         };
         return <Post key={post.data.id} post={postData} />;
       });
-      return <div>{postItems}</div>;
+      return (
+        <React.Fragment>
+          <div
+            className="rounded pb-3 mb-3"
+            style={{
+              boxShadow: '0 0 20px rgba(0,0,0,0.10), 0 6px 6px rgba(0,0,0,0.15)'
+            }}
+          >
+            {postItems}
+          </div>
+          <PageNavigator
+            count={this.props.count}
+            url={this.props.sort}
+            after={this.props.posts.data.after}
+            before={this.props.posts.data.before}
+          />
+        </React.Fragment>
+      );
     }
     return <h1>Loading</h1>;
   }

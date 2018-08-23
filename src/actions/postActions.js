@@ -9,10 +9,10 @@ export const fetchPosts = url => dispatch => {
       })
     : axios.get(url).then(res => {
         console.log('fetched from url');
-        sessionStorage.setItem(url, JSON.stringify(res.data.data.children));
+        sessionStorage.setItem(url, JSON.stringify(res.data));
         dispatch({
           type: FETCH_POSTS,
-          payload: res.data.data.children
+          payload: res.data
         });
       });
 };

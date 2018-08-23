@@ -36,6 +36,7 @@ class Post extends Component {
                   data-target={`#${name}`}
                   src={thumbnail}
                   className="rounded"
+                  alt="post"
                 />
                 <div className="modal fade" id={name}>
                   <div className="modal-dialog modal-lg">
