@@ -5,8 +5,9 @@ class PageNavigator extends Component {
     const { count, url } = this.props;
     return (
       <nav>
+        {console.log(count)}
         <ul className="pagination justify-content-center">
-          {parseInt(count) - 25 <= 0 ? (
+          {parseInt(count) - 25 < 1 ? (
             <li className="page-item disabled">
               <a className="page-link">« Previous</a>
             </li>

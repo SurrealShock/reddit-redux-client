@@ -18,7 +18,11 @@ class App extends Component {
         <Router>
           <div className="App">
             <Switch>
-              <Route exact path="/" render={() => <Redirect to="/hot" />} />
+              <Route
+                exact
+                path="/"
+                render={() => <Redirect to="/hot?raw_json=1" />}
+              />
               <Route exact path="/:sort" component={PostListPage} />
               <Route
                 exact
