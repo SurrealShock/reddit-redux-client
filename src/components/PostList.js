@@ -13,10 +13,9 @@ class PostList extends Component {
       } else {
         return (
           <video
-            autoPlay={true}
-            muted={true}
-            loop={true}
-            preload="auto"
+            controls
+            muted={false}
+            autoPlay
             style={{ maxWidth: '90%', height: 'auto' }}
           >
             <source src={data.media.reddit_video.fallback_url} />
@@ -27,14 +26,17 @@ class PostList extends Component {
       if (data.preview.reddit_video_preview) {
         return (
           <video
-            autoPlay={true}
-            muted={true}
-            loop={true}
-            preload="auto"
+            controls
+            muted={false}
+            autoPlay
             style={{ maxWidth: '90%', height: 'auto' }}
           >
             <source src={data.preview.reddit_video_preview.fallback_url} />)
           </video>
+        );
+      } else if (data.url.indexOf('.gif') !== -1) {
+        return (
+          <img style={{ maxWidth: '95%' }} src={data.url} className="rounded" />
         );
       } else {
         return (

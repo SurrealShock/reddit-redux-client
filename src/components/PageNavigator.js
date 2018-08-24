@@ -7,7 +7,7 @@ class PageNavigator extends Component {
       <nav>
         {console.log(count)}
         <ul className="pagination justify-content-center">
-          {parseInt(count) - 25 < 1 ? (
+          {parseInt(count) - 25 < 0 ? (
             <li className="page-item disabled">
               <a className="page-link">« Previous</a>
             </li>

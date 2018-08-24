@@ -63,7 +63,7 @@ class PostListPage extends Component {
             count={
               qs.parse(this.props.location.search).count
                 ? qs.parse(this.props.location.search).count
-                : 25
+                : 0
             }
             sort={this.props.match.params.sort}
           />
