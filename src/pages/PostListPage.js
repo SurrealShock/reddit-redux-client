@@ -6,6 +6,10 @@ import { connect } from 'react-redux';
 import qs from 'query-string';
 
 class PostListPage extends Component {
+  state = {
+    search: ''
+  };
+
   componentDidMount = () => {
     console.log(
       `https://www.reddit.com/${this.props.match.params.sort}/.json${
@@ -34,6 +38,7 @@ class PostListPage extends Component {
   };
 
   render() {
+    const sort = qs.parse(this.props.location.search).t;
     return (
       <div className="row mr-0">
         <div className="col-2">
@@ -58,7 +63,7 @@ class PostListPage extends Component {
                     aria-haspopup="true"
                     aria-expanded="false"
                   >
-                    Past Day <i className="fas fa-angle-down" />
+                    Past {sort} <i className="fas fa-angle-down" />
                   </h5>
                   <div
                     className="dropdown-menu"
@@ -75,31 +80,44 @@ class PostListPage extends Component {
               ) : null}
             </div>
             <div className="col-auto pl-1">
-              <input
-                type="text"
-                className="shadow"
-                placeholder="Search"
-                style={{
-                  display: 'inline-block',
-                  verticalAlign: 'middle',
-                  paddingLeft: '1rem',
-                  borderRadius: '25px',
-                  border: 'none',
-                  width: '200px',
-                  outline: 'none'
+              <form
+                onSubmit={e => {
+                  e.preventDefault();
+                  window.location.href = `/search/.json?q=${
+                    this.state.search
+                  }&raw_input=1`;
                 }}
-              />
+              >
+                <input
+                  type="search"
+                  className="shadow"
+                  placeholder="Search"
+                  name="search"
+                  role="search"
+                  value={this.state.search}
+                  onChange={e =>
+                    this.setState({ [e.target.name]: e.target.value })
+                  }
+                  style={{
+                    display: 'inline-block',
+                    verticalAlign: 'middle',
+                    paddingLeft: '1rem',
+                    borderRadius: '25px',
+                    border: 'none',
+                    width: '200px',
+                    outline: 'none'
+                  }}
+                />
+              </form>
             </div>
           </div>
-          {console.log(this.props)}
-
           <PostList
             count={
               qs.parse(this.props.location.search).count
                 ? qs.parse(this.props.location.search).count
                 : 0
             }
-            sort={this.props.match.params.sort}
+            sort={sort}
           />
         </div>
       </div>

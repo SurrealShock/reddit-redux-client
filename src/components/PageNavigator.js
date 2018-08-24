@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 
 class PageNavigator extends Component {
   render() {
-    const { count, url } = this.props;
+    const { count, sort } = this.props;
+    console.log(sort);
     return (
       <nav>
-        {console.log(count)}
         <ul className="pagination justify-content-center">
-          {parseInt(count) - 25 < 0 ? (
+          {parseInt(count, 10) - 25 < 0 ? (
             <li className="page-item disabled">
               <a className="page-link">« Previous</a>
             </li>
@@ -15,9 +15,9 @@ class PageNavigator extends Component {
             <li className="page-item">
               <a
                 className="page-link"
-                href={`${url}?count=${(
-                  parseInt(count) - 25
-                ).toString()}&before=${this.props.before}&raw_json=1`}
+                href={`?count=${(parseInt(count, 10) - 25).toString()}&before=${
+                  this.props.before
+                }&raw_json=1${sort ? `&t=${sort}` : ``}`}
                 style={{ color: '#ff5722' }}
               >
                 « Previous
@@ -28,9 +28,9 @@ class PageNavigator extends Component {
           <li className="page-item">
             <a
               className="page-link"
-              href={`${url}?count=${(parseInt(count) + 25).toString()}&after=${
+              href={`?count=${(parseInt(count, 10) + 25).toString()}&after=${
                 this.props.after
-              }&raw_json=1`}
+              }&raw_json=1${sort ? `&t=${sort}` : ``}`}
               style={{ color: '#ff5722' }}
             >
               Next »

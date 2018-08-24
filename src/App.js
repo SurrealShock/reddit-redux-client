@@ -9,7 +9,7 @@ import {
   Switch,
   Redirect
 } from 'react-router-dom';
-import PostDetailPage from './pages/PostDetailPage';
+// import PostDetailPage from './pages/PostDetailPage';
 
 class App extends Component {
   render() {

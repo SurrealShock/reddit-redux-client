@@ -39,7 +39,12 @@ class PostList extends Component {
         );
       } else if (data.url.indexOf('.gif') !== -1) {
         return (
-          <img style={{ maxWidth: '95%' }} src={data.url} className="rounded" />
+          <img
+            style={{ maxWidth: '95%' }}
+            src={data.url}
+            className="rounded"
+            alt="gif"
+          />
         );
       } else {
         return (
@@ -47,6 +52,7 @@ class PostList extends Component {
             style={{ maxWidth: '95%' }}
             src={data.preview.images[0].source.url}
             className="rounded"
+            alt="image"
           />
         );
       }
@@ -88,9 +94,9 @@ class PostList extends Component {
           </div>
           <PageNavigator
             count={this.props.count}
-            url={this.props.sort}
             after={this.props.posts.data.after}
             before={this.props.posts.data.before}
+            sort={this.props.sort}
           />
         </React.Fragment>
       );
