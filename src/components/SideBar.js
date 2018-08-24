@@ -36,28 +36,28 @@ class SideBar extends Component {
         <div className="nav flex-column">
           <a
             href="/hot?raw_json=1"
-            className="nav-link pl-0 pt-4"
+            className="nav-link pl-0 mt-4"
             style={{ color: section === 'hot' ? '#ff4500' : 'inherit' }}
           >
             <i className="fas fa-bullseye" /> HOT
           </a>
           <a
             href="/new?raw_json=1"
-            className="nav-link pl-0 pt-4"
+            className="nav-link pl-0 mt-4"
             style={{ color: section === 'new' ? '#ff4500' : 'inherit' }}
           >
             <i className="fas fa-plus-circle" /> NEW
           </a>
           <a
             href="/rising?raw_json=1"
-            className="nav-link pl-0 pt-4"
+            className="nav-link pl-0 mt-4"
             style={{ color: section === 'rising' ? '#ff4500' : 'inherit' }}
           >
             <i className="fas fa-chart-line" /> RISING
           </a>
           <a
             href="/controversial?raw_json=1"
-            className="nav-link pl-0 pt-4"
+            className="nav-link pl-0 mt-4"
             style={{
               color: section === 'controversial' ? '#ff4500' : 'inherit'
             }}
@@ -70,28 +70,28 @@ class SideBar extends Component {
           </a>
           <a
             href="/top?raw_json=1"
-            className="nav-link pl-0 pt-4"
+            className="nav-link pl-0 mt-4"
             style={{ color: section === 'top' ? '#ff4500' : 'inherit' }}
           >
             <i className="fas fa-sort-amount-up" /> TOP
           </a>
           <a
             href="/gilded?raw_json=1"
-            className="nav-link pl-0 pt-4"
+            className="nav-link pl-0 mt-4"
             style={{ color: section === 'gilded' ? '#ff4500' : 'inherit' }}
           >
             <i className="fas fa-medal" /> GILDED
           </a>
           <a
             href="https://www.reddit.com/wiki/index"
-            className="nav-link pl-0 pt-4"
+            className="nav-link pl-0 mt-4"
             style={{ color: 'inherit' }}
           >
             <i className="fas fa-university" /> WIKI
           </a>
           {/* <a
             href="#"
-            className="nav-link pl-0 pt-4 text-muted"
+            className="nav-link pl-0 mt-4 text-muted"
             style={{ color: section === 'settings' ? '#ff4500' : 'inherit' }}
           >
             <i className="fas fa-cog" /> Settings

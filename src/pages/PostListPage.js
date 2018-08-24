@@ -41,12 +41,12 @@ class PostListPage extends Component {
         </div>
         <div className="col-10">
           <div className="row align-items-center mt-3 mb-3">
-            <div className="col-md-auto">
+            <div className="col-auto">
               <h5 style={{ textTransform: 'capitalize' }} className="m-0">
                 {this.props.match.params.sort}
               </h5>
             </div>
-            <div className="col">
+            <div className="col-auto mr-auto">
               {this.props.match.params.sort === 'controversial' ||
               this.props.match.params.sort === 'top' ? (
                 <div className="dropdown">
@@ -60,7 +60,6 @@ class PostListPage extends Component {
                   >
                     Past Day <i className="fas fa-angle-down" />
                   </h5>
-
                   <div
                     className="dropdown-menu"
                     aria-labelledby="dropdownMenuButton"
@@ -75,7 +74,7 @@ class PostListPage extends Component {
                 </div>
               ) : null}
             </div>
-            <div className="pl-0 col-2 float-left">
+            <div className="col-auto pl-1">
               <input
                 type="text"
                 className="shadow"
