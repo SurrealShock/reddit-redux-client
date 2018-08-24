@@ -24,11 +24,11 @@ class App extends Component {
                 render={() => <Redirect to="/hot?raw_json=1" />}
               />
               <Route exact path="/:sort" component={PostListPage} />
-              <Route
+              {/* <Route
                 exact
                 path="/r/:subreddit/comments/:id/:titleid"
                 component={PostDetailPage}
-              />
+              /> */}
             </Switch>
           </div>
         </Router>

@@ -19,11 +19,25 @@ class PostListPage extends Component {
     );
   };
 
+  DropDownSort = sort => {
+    return (
+      <a
+        className="dropdown-item"
+        href={
+          this.props.location.pathname +
+          `?raw_json=1&t=${sort.split(' ')[0].toLowerCase()}`
+        }
+      >
+        {sort}
+      </a>
+    );
+  };
+
   render() {
     return (
       <div className="row mr-0">
         <div className="col-2">
-          <SideBar />
+          <SideBar section={this.props.match.params.sort} />
         </div>
         <div className="col-10">
           <div className="row align-items-center mt-3 mb-3">
@@ -32,15 +46,36 @@ class PostListPage extends Component {
                 {this.props.match.params.sort}
               </h5>
             </div>
-            <div className="col-6">
-              <h5 className="m-0" style={{ color: '#ff4500' }}>
-                Past 24 hours <i className="fas fa-angle-down" />
-              </h5>
+            <div className="col">
+              {this.props.match.params.sort === 'controversial' ||
+              this.props.match.params.sort === 'top' ? (
+                <div className="dropdown">
+                  <h5
+                    className="m-0"
+                    style={{ color: '#ff4500', cursor: 'pointer' }}
+                    id="dropdownMenuButton"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    Past Day <i className="fas fa-angle-down" />
+                  </h5>
+
+                  <div
+                    className="dropdown-menu"
+                    aria-labelledby="dropdownMenuButton"
+                  >
+                    {this.DropDownSort('Hour')}
+                    {this.DropDownSort('Day')}
+                    {this.DropDownSort('Week')}
+                    {this.DropDownSort('Month')}
+                    {this.DropDownSort('Year')}
+                    {this.DropDownSort('All Time')}
+                  </div>
+                </div>
+              ) : null}
             </div>
-            <div className="col-md-auto">
-              <i className="fas fa-envelope" />
-            </div>
-            <div className="pl-0 col-1">
+            <div className="pl-0 col-2 float-left">
               <input
                 type="text"
                 className="shadow"

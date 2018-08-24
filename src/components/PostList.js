@@ -6,6 +6,9 @@ import PageNavigator from './PageNavigator';
 
 class PostList extends Component {
   previewURL = data => {
+    if (data.crosspost_parent_list) {
+      data = data.crosspost_parent_list[0];
+    }
     if (data.media) {
       if (data.media.oembed) {
         const embedString = data.media.oembed.html.replace('\\', '');
