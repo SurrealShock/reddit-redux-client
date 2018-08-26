@@ -40,7 +40,8 @@ class PostModal extends Component {
           alt="post"
         />
         <Modal
-          className="Modal__Bootstrap modal-dialog"
+          style={{ width: '1000px' }}
+          className="Modal__Bootstrap modal-dialog modal-lg"
           closeTimeoutMS={150}
           isOpen={this.state.showModal}
           onRequestClose={this.handleCloseModal}
