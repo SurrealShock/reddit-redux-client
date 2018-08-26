@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 import HoverIcon from './postComponents/HoverIcon';
-import Modal from './postComponents/Modal';
+import Modal from './postComponents/PostModal';
 
 class Post extends Component {
   render() {
@@ -28,6 +28,7 @@ class Post extends Component {
               thumbnail={thumbnail}
               preview={preview}
               title={title}
+              id={name}
             />
           ) : (
             <a className="text-muted" href={url}>
