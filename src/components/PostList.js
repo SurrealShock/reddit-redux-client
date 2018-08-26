@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { fetchPosts } from '../actions/postActions';
 import React, { Component } from 'react';
 import Post from './Post';
-import PageNavigator from './PageNavigator';
+import PageNavigator from './postComponents/PageNavigator';
 
 class PostList extends Component {
   previewURL = data => {
@@ -61,14 +61,19 @@ class PostList extends Component {
     }
   };
 
+  thumbnailURL = data => {
+    if (data.thumbnail !== 'self') {
+      return data.preview.images[0].resolutions[1].url;
+    } else {
+      return null;
+    }
+  };
+
   render() {
     if (this.props.posts.length !== 0) {
       const postItems = this.props.posts.data.children.map(post => {
         const postData = {
-          thumbnail:
-            post.data.thumbnail.indexOf('ps') !== -1
-              ? post.data.thumbnail
-              : null,
+          thumbnail: this.thumbnailURL(post.data),
           name: post.data.name,
           title: post.data.title,
           preview: this.previewURL(post.data),

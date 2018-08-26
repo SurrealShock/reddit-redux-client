@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import moment from 'moment';
-import HoverIcon from './HoverIcon';
-import ReactHtmlParser from 'react-html-parser';
+import HoverIcon from './postComponents/HoverIcon';
+import Modal from './postComponents/Modal';
 
 class Post extends Component {
   render() {
@@ -23,37 +23,12 @@ class Post extends Component {
       <div className="row align-items-center pl-4 pr-4 pt-4">
         <div className="col-auto">
           {thumbnail ? (
-            <div>
-              <img
-                style={{
-                  width: '140px',
-                  maxHeight: '180px',
-                  objectFit: 'cover',
-                  cursor: 'pointer'
-                }}
-                data-toggle="modal"
-                data-target={`#${name}`}
-                src={thumbnail}
-                className="rounded"
-                alt="post"
-              />
-              <div className="modal fade" id={name}>
-                <div className="modal-dialog modal-lg">
-                  <div className="modal-content">
-                    <div className="modal-header">
-                      <h3>{title}</h3>
-                    </div>
-                    <div className="modal-body text-center">
-                      {typeof preview === typeof '' ? (
-                        <div>{ReactHtmlParser(preview)}</div>
-                      ) : (
-                        preview
-                      )}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <Modal
+              name={name}
+              thumbnail={thumbnail}
+              preview={preview}
+              title={title}
+            />
           ) : (
             <a className="text-muted" href={url}>
               <i
