@@ -63,7 +63,7 @@ class Post extends Component {
             </a>
           )}
         </div>
-        <div style={{ width: '80%' }} className="col-auto mr-auto">
+        <div style={{ width: '80%' }} className="col">
           <a
             style={{ color: 'inherit', fontWeight: '600' }}
             href={`https://www.reddit.com${permalink}`}
