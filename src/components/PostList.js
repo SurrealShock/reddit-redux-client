@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { fetchPosts } from '../actions/postActions';
 import React, { Component } from 'react';
 import Post from './Post';
-import PageNavigator from './PageNavigator';
+import PageNavigator from './postComponents/PageNavigator';
 
 class PostList extends Component {
   previewURL = data => {
@@ -39,7 +39,12 @@ class PostList extends Component {
         );
       } else if (data.url.indexOf('.gif') !== -1) {
         return (
-          <img style={{ maxWidth: '95%' }} src={data.url} className="rounded" />
+          <img
+            style={{ maxWidth: '95%' }}
+            src={data.url}
+            className="rounded"
+            alt="gif"
+          />
         );
       } else {
         return (
@@ -47,9 +52,18 @@ class PostList extends Component {
             style={{ maxWidth: '95%' }}
             src={data.preview.images[0].source.url}
             className="rounded"
+            alt="image"
           />
         );
       }
+    } else {
+      return null;
+    }
+  };
+
+  thumbnailURL = data => {
+    if (data.thumbnail !== 'self') {
+      return data.preview.images[0].resolutions[1].url;
     } else {
       return null;
     }
@@ -59,10 +73,7 @@ class PostList extends Component {
     if (this.props.posts.length !== 0) {
       const postItems = this.props.posts.data.children.map(post => {
         const postData = {
-          thumbnail:
-            post.data.thumbnail.indexOf('ps') !== -1
-              ? post.data.thumbnail
-              : null,
+          thumbnail: this.thumbnailURL(post.data),
           name: post.data.name,
           title: post.data.title,
           preview: this.previewURL(post.data),
@@ -88,9 +99,9 @@ class PostList extends Component {
           </div>
           <PageNavigator
             count={this.props.count}
-            url={this.props.sort}
             after={this.props.posts.data.after}
             before={this.props.posts.data.before}
+            sort={this.props.sort}
           />
         </React.Fragment>
       );

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 class SideBar extends Component {
   constructor(props) {
@@ -23,7 +23,6 @@ class SideBar extends Component {
 
   render() {
     const { section } = this.props;
-    console.log(section);
     return (
       <div
         className="sticky-top p-3 shadow"
